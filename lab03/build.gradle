@@ -8,3 +8,19 @@ dependencies {
             name: 'commons-csv', 
             version: '1.4'
 }
+
+buildscript {
+   repositories {
+      flatDir dirs: '/home/wesley/Desktop/CSCI2020U/proguard5.3.2/lib/'
+   }
+   dependencies {
+      classpath ':proguard'
+   }
+}
+
+task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
+   configuration 'proguard.cfg'
+    
+   injars 'build/libs/lab03.jar'
+   outjars 'build/libs/lab03.min.jar'
+}
