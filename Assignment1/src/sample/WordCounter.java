@@ -51,11 +51,14 @@ public class WordCounter {
                         Scanner scanner = new Scanner(file);
                         numOfFiles = new TreeMap<>();
                         while (scanner.hasNext()) {
-                                String word = scanner.next();
+				//changes all words to uppercase so instead of having multiple of the same word 
+				//but different casing will be counted as one word
+				// ex: Test == tEst == TEsT   all become TEST
+                                String word = scanner.next().toUpperCase();
                                 countWord(word);
                         }
                 }
-        }
+        } 
 
         //increments the amount of times each unique word appears
         private void countWord(String word) {
